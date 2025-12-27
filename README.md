@@ -174,14 +174,14 @@ streamlit run app.py
   
 *The dashboard will launch automatically in your browser at* http://localhost:8501
 
-##🌍 Real-World Applications
+## 🌍 Real-World Applications
 This system is designed for:
 - **⚖️Environmental Litigation:**
   Quantifying ecological damage for Public Interest Litigations (PIL).
 - **📢Policy Advocacy:** Informing legislative debate with data-backed financial liabilities.
 - **🏢Corporate ESG:** Monitoring environmental compliance in mining zones.
 
-##📚 How to Cite This Work
+## 📚 How to Cite This Work
 If you use this methodology or data in your research or reporting, please cite:
 
 >> Saha, R. (2025).*Terra-Valuation Engine: Satellite-Based Quantification of Ecological Liability under India's 2025 Hill Definition.* GitHub Repository.
@@ -192,7 +192,7 @@ If you use this methodology or data in your research or reporting, please cite:
 ## 👨‍💻 Developed By
 **Ranjit Saha**
 
->>>*Geospatial Data Scientist & Engineer*  | *Specializing in AI, Remote Sensing & Data-Driven Solutions.*
+ *Geospatial Data Scientist & Engineer*  | *Specializing in AI, Remote Sensing & Data-Driven Solutions.*
 - 🎓 B.Tech Information Technology (BBIT-Kolkata, 2022-2025)
 - 🗺️ Diploma in GIS & GPS (West Bengal Survey Institute, 2019-2021)
 - 💡 Project Status: Independent Research / Original Intellectual Property.
