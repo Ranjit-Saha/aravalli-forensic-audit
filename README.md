@@ -13,13 +13,12 @@
 
 ## 📸 Forensic Dashboard
 
-*🛑Zone B Risk (Future Threat)* 
-![Dashboard Preview](assets/01.png)
-*⚠️Verified Loss (2026-2024)* 
-![Dashboard Preview](assets/02.png)
-*🛰️📡 Satellite Verification (True Color)*
-![Dashboard Preview](assets/03.png)
+*🛑 Zone B Risk (Future Threat)* ![Dashboard Preview](assets/01.png)
 
+*⚠️ Verified Loss (2016-2024)* ![Dashboard Preview](assets/02.png)
+
+*🛰️ Satellite Verification (True Color)*
+![Dashboard Preview](assets/03.png)
 
 ---
 
@@ -39,6 +38,22 @@ This engine **quantifies the hidden ecological liability** of that legal redefin
 1. **Mapping** exactly which hill systems lost protection (Zone B).
 2. **Calculating** the specific ecological services at risk (Water, Vegetation).
 3. **Converting** these losses into financial terms (₹ Crores) for policy debate.
+
+---
+
+### 📍 Geospatial Scope (Study Area)
+The forensic audit focuses on the **South Gurgaon Mining Belt**, a critical ecological corridor connecting the Delhi Ridge to the Mewat hills.
+
+**Bounding Box Coordinates:**
+* **West:** 76.9° E
+* **East:** 77.3° E
+* **South:** 28.1° N
+* **North:** 28.5° N
+
+**Key Fracture Zones:**
+* **Manesar & Bhondsi:** Primary groundwater recharge zones for the NCT aquifer.
+* **Sohna Gap:** Critical wildlife corridor connecting to Sariska Tiger Reserve.
+* **Damdama Lake Catchment:** Historical catchment area now facing urbanization pressure.
 
 ---
 
@@ -100,7 +115,7 @@ The engine translates the legal text into executable geospatial logic:
 
 ## 📂 Repository Structure
 
- ```text
+```text
 aravalli-forensic-audit/
 │
 ├── app.py                      # 🧠 Main Streamlit Application Logic
@@ -111,15 +126,18 @@ aravalli-forensic-audit/
 │   ├── aravalli_risk_vectors_v3_optimized.geojson  # Zone B (Future Threat)
 │   └── aravalli_loss_vectors.geojson               # Verified Loss (Past Evidence)
 │
-│── assets/                        
-│   ├── 01.png                  # 🛑Zone B Risk (Future Threat) 
-│   └── 02.png                  # ⚠️Verified Loss (2026-2024)
-│   └── 03.png                  # 🛰️📡 Satellite Verification (True Color)
+├── scripts/                        
+│   ├── terra_validation_engine.js 
+│   └── forensic_audit_loss_analysis.js     
+│           
+├── assets/                     # 📸 Dashboard Screenshots   
+│   ├── 01.png                  # 🛑 Zone B Risk (Future Threat) 
+│   ├── 02.png                  # ⚠️ Verified Loss (2016-2024)
+│   └── 03.png                  # 🛰️ Satellite Verification (True Color)
 │
-└── README.md                   # 📄 Documentation  
+└── README.md                   # 📄 Documentation
 
 ```
-
 
 ## 🚀 Installation & Usage
 **Prerequisites**
@@ -130,7 +148,7 @@ aravalli-forensic-audit/
 ```bash 
    git clone [https://github.com/Ranjit-Saha/aravalli-forensic-audit.git](https://github.com/Ranjit-Saha/aravalli-forensic-audit.git)
    cd aravalli-forensic-audit
- ```
+```
  
 
 ### 2.Install Dependencies   
@@ -157,16 +175,16 @@ This system is designed for:
 ##📚 How to Cite This Work
 If you use this methodology or data in your research or reporting, please cite:
 
-> Saha, R. (2025).*Terra-Valuation Engine: Satellite-Based Quantification of Ecological Liability under India's 2025 Hill Definition.* GitHub Repository.
+>> Saha, R. (2025).*Terra-Valuation Engine: Satellite-Based Quantification of Ecological Liability under India's 2025 Hill Definition.* GitHub Repository.
 
 **Media/NGO Attribution:**
->"Forensic Analysis by Ranjit Saha, Geospatial Data Scientist (Terra-Valuation Engine, 2025)."
+>>"Forensic Analysis by Ranjit Saha, Geospatial Data Scientist (Terra-Valuation Engine, 2025)."
 
 ## 👨‍💻 Developed By
 **Ranjit Saha**
 
-*Geospatial Data Scientist & Engineer | Specializing in AI-Driven Environmental Forensics.*
-- 🎓 B.Tech Information Technology (2022-2025)
+>>>*Geospatial Data Scientist & Engineer*  | *Specializing in AI, Remote Sensing & Data-Driven Solutions.*
+- 🎓 B.Tech Information Technology (BBIT-Kolkata, 2022-2025)
 - 🗺️ Diploma in GIS & GPS (West Bengal Survey Institute, 2019-2021)
 - 💡 Project Status: Independent Research / Original Intellectual Property.
 
