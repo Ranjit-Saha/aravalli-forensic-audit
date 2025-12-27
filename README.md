@@ -1,4 +1,4 @@
-# 🌍 Terra-Valuation Engine: Aravalli Forensic Audit (v3.0)
+ # 🌍 Terra-Valuation Engine: Aravalli Forensic Audit (v3.0)
 ### *Satellite-Based Quantification of Ecological Liability under the Nov 2025 Supreme Court Ruling*
 
 ![Status](https://img.shields.io/badge/Status-Production%20Audit-green?style=for-the-badge)
@@ -13,12 +13,21 @@
 
 ## 📸 Forensic Dashboard
 
-*🛑 Zone B Risk (Future Threat)* ![Dashboard Preview](assets/01.png)
+### ⭕ Dashboard Overview
+![Dashboard Overview](assets/dashboard.png)
+*High-level financial & ecological metrics.*
 
-*⚠️ Verified Loss (2016-2024)* ![Dashboard Preview](assets/02.png)
+### 🛑 Zone B Risk (Future Threat)
+![Zone B Risk](assets/risk.png)
+*Red zones indicate vulnerable land areas.*
 
-*🛰️ Satellite Verification (True Color)*
-![Dashboard Preview](assets/03.png)
+### ⚠️ Verified Loss (2016-24)
+![Verified Loss](assets/loss.png)
+*Yellow points show detected vegetation loss.*
+
+### 🛰️ Satellite Verification
+![Satellite View](assets/satellite.png)
+*True color satellite imagery for verification.*
 
 ---
 
@@ -131,12 +140,12 @@ aravalli-forensic-audit/
 │   └── forensic_audit_loss_analysis.js     
 │           
 ├── assets/                     # 📸 Dashboard Screenshots   
-│   ├── 01.png                  # 🛑 Zone B Risk (Future Threat) 
-│   ├── 02.png                  # ⚠️ Verified Loss (2016-2024)
-│   └── 03.png                  # 🛰️ Satellite Verification (True Color)
+│   ├── dashboard.png           # ⭕ Dashboard Overview 
+│   ├── risk.png                # 🛑 Zone B Risk (Future Threat)
+│   ├── loss.png                # ⚠️ Verified Loss (2016-2024)
+│   └── satellite.png           # 🛰️ Satellite Verification (True Color)
 │
 └── README.md                   # 📄 Documentation
-
 ```
 
 ## 🚀 Installation & Usage
