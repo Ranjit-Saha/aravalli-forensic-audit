@@ -253,7 +253,7 @@ streamlit run app.py
 
 If you reference this project, methodology, or system design in academic, technical, or professional contexts, please cite as follows:
 
-> **Saha, R. (2025).** *Terra-Valuation Engine: A Geospatial Modeling Framework for Translating Classification Thresholds into Satellite-Executable Analytics.* GitHub Repository[https://github.com/Ranjit-Saha/aravalli-forensic-audit]
+> **Saha, R. (2025).** *Terra-Valuation Engine: A Geospatial Modeling Framework for Translating Classification Thresholds into Satellite-Executable Analytics.* [GitHub](https://github.com/Ranjit-Saha/aravalli-forensic-audit)
 
 ### Citation Notes
 - This citation refers to the **engineering methodology, system architecture, and geospatial computation techniques** demonstrated in this repository.
