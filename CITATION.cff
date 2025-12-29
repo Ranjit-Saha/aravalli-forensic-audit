@@ -3,8 +3,8 @@ message: "If you use this software or its methodology, please cite it as below."
 authors:
   - family-names: Saha
     given-names: Ranjit
-    affiliation: "Geospatial Engineer"
-title: "Terra-Valuation Engine: A Geospatial Modeling Framework for Satellite-Executable Analytics"
+    affiliation: "Geospatial Engineer 🌍"
+title: "🌍 Terra-Valuation Engine: A Geospatial Modeling Framework for Satellite-Executable Analytics"
 version: 3.0.0
 date-released: "2025-12-29"
 url: "https://github.com/Ranjit-Saha/aravalli-forensic-audit"
