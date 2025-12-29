@@ -2,153 +2,218 @@ import streamlit as st
 import geopandas as gpd
 import plotly.express as px
 
+# ============================================================
 # 1. PAGE CONFIGURATION
+# ============================================================
 st.set_page_config(
     page_title="Terra-Valuation Engine | Aravalli Audit",
     page_icon="🌍",
     layout="wide"
 )
 
+# ============================================================
+# PURPOSE & SCOPE BANNER (CRITICAL HARDENING)
+# ============================================================
+st.markdown("""
+### 🌍 Terra-Valuation Engine — Technical Demonstration
 
+**Purpose**  
+This application demonstrates how *legally defined geographic thresholds* can be translated into
+**satellite-based computational models** for environmental risk and exposure analysis.
+
+**Scope Notice**  
+All outputs are **model-derived, scenario-based estimates** intended for engineering,
+academic, and systems-design evaluation only.  
+They **do not represent legal findings, official government determinations,
+or enforceable valuations**.
+""")
+
+st.markdown("---")
+
+# ============================================================
 # --- STEP 1: THE ENGINE (Optimized Data Loader) ---
+# ============================================================
 @st.cache_data
 def load_data(filepath):
     """
-    Loads GeoJSON, simplifies geometry for speed, and calculates area.
+    Loads GeoJSON, computes precise area, and simplifies geometry
+    for web-scale visualization.
     """
     try:
         gdf = gpd.read_file(filepath)
 
-        # 1. Calculate Area (Precise Math)
-        # We assume the original file is accurate, so we measure area BEFORE simplifying
+        # Area calculation (engineering-grade)
         gdf_meters = gdf.to_crs(epsg=32643)
         total_sq_meters = gdf_meters.geometry.area.sum()
         total_hectares = total_sq_meters / 10000
 
-        # 2. Optimize for Map (Visual Speed) - THE NEW PART
-        # We simplify the polygons to remove tiny, invisible details.
-        # tolerance=0.0001 is roughly 10 meters, perfect for web maps.
+        # Visualization optimization
         gdf_display = gdf.to_crs(epsg=4326)
-        gdf_display['geometry'] = gdf_display.geometry.simplify(tolerance=0.0001, preserve_topology=True)
+        gdf_display["geometry"] = gdf_display.geometry.simplify(
+            tolerance=0.0001,
+            preserve_topology=True
+        )
 
         return total_hectares, gdf_display
-    except Exception as e:
+    except Exception:
         return 0, None
 
 
+# ============================================================
 # 2. TITLE & CONTEXT
+# ============================================================
 st.title("🌍 Terra-Valuation Engine: Forensic Audit (v3.0)")
 st.markdown("""
-**System Status:** 🔴 LIVE MONITORING | **Region:** South Gurgaon Mining Belt
-> *A forensic geospatial audit quantifying the 'Hidden Ecological Liability' of the Nov 2025 Supreme Court ruling (Relief < 100m).*
+**System Status:** 🔴 LIVE MONITORING  
+**Region:** South Gurgaon Mining Belt
+
+*A geospatial modeling system translating Supreme Court relief thresholds
+into satellite-derived environmental exposure indicators.*
 """)
+
 st.markdown("---")
 
-# 3. SIDEBAR - AUDIT CONTROLS
+# ============================================================
+# 3. SIDEBAR — FORENSIC PARAMETERS
+# ============================================================
 st.sidebar.header("🛡️ Forensic Parameters")
-legal_std = st.sidebar.selectbox("Legal Standard Applied", ["Supreme Court Nov 2025 (>100m Relief)"])
-data_source = st.sidebar.info(
-    "Satellite Data Sources:\n- JAXA ALOS World 3D (30m)\n- ESA WorldCover (10m)\n- Sentinel-2 (Temporal)")
 
-# --- STEP 2: FINANCIAL INPUTS ---
-st.sidebar.markdown("---")
-st.sidebar.header("💰 Valuation Scenarios")
-land_rate = st.sidebar.slider(
-    "Land Value Estimate (₹ Cr/Acre)",
-    min_value=1.0, max_value=10.0, value=5.0, step=0.5
+legal_std = st.sidebar.selectbox(
+    "Legal Standard Referenced",
+    ["Supreme Court Nov 2025 (>100m Relief Threshold)"]
 )
 
-# --- STEP 3: EXECUTE CALCULATIONS (Risk & Loss) ---
+st.sidebar.info(
+    "Satellite Data Sources:\n"
+    "- JAXA ALOS World 3D (30m)\n"
+    "- ESA WorldCover (10m)\n"
+    "- Sentinel-2 (Temporal)"
+)
 
-# A. LOAD RISK DATA (Zone B - Red)
+# ============================================================
+# 4. VALUATION SCENARIOS (OPTIONAL OVERLAY)
+# ============================================================
+st.sidebar.markdown("---")
+st.sidebar.header("💰 Valuation Scenarios (Illustrative)")
+
+land_rate = st.sidebar.slider(
+    "Land Value Scenario (₹ Cr / Acre)",
+    min_value=1.0,
+    max_value=10.0,
+    value=5.0,
+    step=0.5
+)
+
+# ============================================================
+# 5. EXECUTE CORE COMPUTATION
+# ============================================================
 risk_file = "data/aravalli_risk_vectors_v3_optimized.geojson"
-risk_ha, risk_gdf = load_data(risk_file)
-
-# B. LOAD LOSS DATA (Vegetation Loss - Yellow)
 loss_file = "data/aravalli_loss_vectors.geojson"
+
+risk_ha, risk_gdf = load_data(risk_file)
 loss_ha, loss_gdf = load_data(loss_file)
 
-# C. CALCULATE METRICS
-# Financial: Hectares * 2.471 * Rate
-total_liability = risk_ha * 2.471 * land_rate
-
-# Water: Hectares / 1000 = Billions of Liters
+# Physical → Economic overlay (explicit separation)
+model_exposure_cr = risk_ha * 2.471 * land_rate
 water_risk_bn = risk_ha / 1000.0
 
-# 4. KEY METRICS ROW (Fully Dynamic)
+# ============================================================
+# 6. KEY METRICS — CLEARLY LABELED
+# ============================================================
+st.subheader("🧮 Physical Computation (Satellite-Derived)")
+
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    st.metric(label="📉 VULNERABLE LAND", value=f"{risk_ha:,.0f} Ha", delta="Zone B Risk")
-with col2:
-    # Now Dynamic!
-    st.metric(label="🚨 VERIFIED LOSS (2016-24)", value=f"{loss_ha:,.0f} Ha", delta="-2.5% Cover",
-              delta_color="inverse")
-with col3:
-    st.metric(label="💧 WATER SECURITY RISK", value=f"{water_risk_bn:.1f} Bn Liters", delta="Annual Loss")
-with col4:
-    st.metric(label="💰 TOTAL LIABILITY", value=f"₹ {total_liability:,.0f} Cr", delta="Annual (Market Risk)")
+    st.metric(
+        label="📉 Model-Identified Vulnerable Land",
+        value=f"{risk_ha:,.0f} Ha",
+        delta="Zone-B Classification"
+    )
 
-# 5. FINANCIAL BREAKDOWN
-st.markdown("### 💰 Financial Liability Scenarios")
+with col2:
+    st.metric(
+        label="🚨 Computed Vegetation Change (2016–24)",
+        value=f"{loss_ha:,.0f} Ha",
+        delta="-2.5% Cover",
+        delta_color="inverse"
+    )
+
+with col3:
+    st.metric(
+        label="💧 Water Security Exposure (Model-Derived)",
+        value=f"{water_risk_bn:.1f} Bn Liters",
+        delta="Annualized Scenario"
+    )
+
+with col4:
+    st.metric(
+        label="💰 Model-Derived Economic Exposure",
+        value=f"₹ {model_exposure_cr:,.0f} Cr",
+        delta="Illustrative Market Overlay"
+    )
+
+# ============================================================
+# 7. VALUATION CONTEXT (ASSUMPTIONS MADE EXPLICIT)
+# ============================================================
+st.markdown("### 💰 Valuation Overlay — Scenario Interpretation")
+
 st.info(f"""
-**AI INSIGHT:** At a market rate of **₹{land_rate} Cr/Acre**, the hidden liability of these **{risk_ha:,.0f} hectares** exceeds **₹{total_liability:,.0f} Crores**.
-The primary driver of financial risk is **Groundwater Security (71%)**, not Carbon. 
+**Scenario Insight**  
+At an illustrative land-value assumption of **₹{land_rate} Cr/Acre**, the modeled exposure
+across **{risk_ha:,.0f} hectares** exceeds **₹{model_exposure_cr:,.0f} Crores**.
+
+**Key Assumptions**
+- Valuation reflects *economic exposure*, not compensation
+- Water-security impact dominates relative risk (~71%)
+- Outputs are comparative indicators, not enforcement figures
 """)
 
-# --- 6. THE FORENSIC MAP (Triple-Mode) ---
-st.subheader("🛰️ Forensic Map: The 'Invisible' Hills")
-st.write("Toggle between Future Risk (Red), Past Loss (Yellow), and Satellite Evidence.")
+# ============================================================
+# 8. FORENSIC MAP (TRIPLE-MODE)
+# ============================================================
+st.subheader("🛰️ Forensic Visualization — Multi-Evidence View")
+st.caption("Switch between modeled future exposure, historical loss, and raw satellite context.")
 
 if risk_gdf is not None:
-    # A. The Forensic Toggle
     map_mode = st.radio(
-        "Select Forensic View:",
+        "Select Visualization Mode:",
         [
-            "🔴 Zone B Risk (Future Threat)",
-            "⚠️ Verified Loss (2016-24)",
-            "🛰️ Satellite Verification (True Color)"
+            "🔴 Model-Identified Vulnerability (Future)",
+            "⚠️ Computed Loss (2016–24)",
+            "🛰️ Satellite Context (True Color)"
         ],
         horizontal=True
     )
 
-    # B. Configure Layers
     if "Satellite" in map_mode:
-        # 1. Satellite Mode (SIMPLIFIED FIX)
         map_style = "white-bg"
-        # We use a simpler dictionary structure here to prevent the 'tuple' error
         map_layers = [{
             "sourcetype": "raster",
-            "source": ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"]
+            "source": [
+                "https://server.arcgisonline.com/ArcGIS/rest/services/"
+                "World_Imagery/MapServer/tile/{z}/{y}/{x}"
+            ]
         }]
         active_gdf = risk_gdf
         poly_color = ["#FF0000"]
         poly_opacity = 0.2
 
-    elif "Verified Loss" in map_mode:
-        # 2. Loss Mode (Yellow)
+    elif "Loss" in map_mode and loss_gdf is not None:
         map_style = "carto-darkmatter"
         map_layers = []
-        if loss_gdf is not None:
-            active_gdf = loss_gdf
-            poly_color = ["#FFFF00"]  # Yellow
-            poly_opacity = 0.8
-            st.caption(f"⚠️ Showing {loss_ha:,.0f} Ha of vegetation destroyed since 2016.")
-        else:
-            st.warning("⚠️ Loss data not found. Showing Risk map.")
-            active_gdf = risk_gdf
-            poly_color = ["#FF0000"]
-            poly_opacity = 0.6
+        active_gdf = loss_gdf
+        poly_color = ["#FFFF00"]
+        poly_opacity = 0.8
+        st.caption(f"Computed vegetation change since 2016: {loss_ha:,.0f} Ha")
 
     else:
-        # 3. Risk Mode (Default Red)
         map_style = "carto-darkmatter"
         map_layers = []
         active_gdf = risk_gdf
         poly_color = ["#FF0000"]
         poly_opacity = 0.6
 
-    # C. Plot
     fig = px.choropleth_mapbox(
         active_gdf,
         geojson=active_gdf.geometry,
@@ -160,7 +225,6 @@ if risk_gdf is not None:
         mapbox_style=map_style
     )
 
-    # Apply layers only if they exist (prevents errors)
     if map_layers:
         fig.update_layout(mapbox_layers=map_layers)
 
@@ -168,4 +232,8 @@ if risk_gdf is not None:
     st.plotly_chart(fig, use_container_width=True)
 
 else:
-    st.error("⚠️ DATA MISSING: Please ensure 'aravalli_risk_vectors_v3_optimized.geojson' is in the 'data' folder.")
+    st.error(
+        "DATA NOT FOUND: Ensure "
+        "'aravalli_risk_vectors_v3_optimized.geojson' "
+        "exists in the /data directory."
+    )
