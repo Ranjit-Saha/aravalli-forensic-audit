@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you reference this project, methodology, or system design in academic, technical, or professional contexts, please cite it as follows."
+authors:
+  - family-names: Saha
+    given-names: Ranjit
+title: "Terra-Valuation Engine: A Technical Methodology for Translating Judicial Thresholds into Geospatial Compliance Analytics"
+version: 3.0.0
+date-released: 2025-12-29
+url: "https://github.com/Ranjit-Saha/aravalli-forensic-audit"
+repository-code: "https://github.com/Ranjit-Saha/aravalli-forensic-audit"
+keywords:
+  - Geospatial Compliance
+  - Environmental Forensics
+  - Google Earth Engine
+  - Satellite Analytics
+  - Regulatory Systems Architecture
+abstract: >-
+  A technical framework designed to operationalize legal geographic thresholds into 
+  executable satellite data queries. This project demonstrates legal-to-code translation, 
+  temporal change detection, and economic modeling for ecological liability.
+license: MIT
