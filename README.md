@@ -270,16 +270,16 @@ If you reference this project, methodology, or system design in academic, techni
 
 - Outputs should not be used for operational decision-making
 ---
-### Author
 
-**Ranjit Saha**
+### 👨‍💻 Author
+Ranjit Saha  
+`Geospatial Data Scientist | GeoAI Engineer`<br>
+`🎓B.Tech in Information Technology | 🗺️Diploma in GIS & GPS` <br> 
+<br> 💡Focused on applying Machine Learning to spatial, environmental, and real-world decision systems.
 
-*Geospatial Data Scientist & Engineer*  | *Specializing in AI, Remote Sensing & Data-Driven Solutions.*
+[🛡️GitHub:](https://github.com/Ranjit-Saha) &emsp; [🪪LinkedIn:](https://www.linkedin.com/in/iamranjitsaha/)
 
-- 🎓B.Tech Information Technology — BBIT Kolkata
-- 🗺️Diploma in GIS & GPS — West Bengal Survey Institute
-- 💡Focus: Spatial analytics, satellite data pipelines, decision-support systems
-
+ 
 ---
 License
 
